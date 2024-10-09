@@ -7,12 +7,16 @@
 }
 
 body {
-    background: url(../assets/img/bg-desktop.webp);
+    background: url('img/bg-desktop.webp');
     font-family: Bai Jamjuree;
 }
 
 #container {
     display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 4rem;
+    gap: 3rem;
 }
 
 .cartao {
@@ -27,6 +31,8 @@ body {
     text-align: center;
     /* background-color: aquamarine; */
     height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 300ms ease-in-out;
 }
 
 .cartao__conteudo h3 {
@@ -41,12 +47,11 @@ body {
     backface-visibility: hidden;
 }
 
-.cartao__conteudo {
-    background-color: var(--card-front-color);
-    text-align: center;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 300ms ease-in-out;
+.cartao__conteudo p {
+    margin-top: 1rem;
+    padding: 2rem;
+    margin-top: 4rem;
+    font-size: 1.4vw;
 }
 
 .cartao__conteudo__pergunta p {
@@ -59,11 +64,7 @@ body {
     font-weight: 700;
 }
 
-.cartao:hover .cartao__conteudo {
-    transform: rotateY(180deg);
-}
-
-.cartao__conteudo__resposta {
+.cartao.active .cartao__conteudo {
     transform: rotateY(180deg);
 }
 
@@ -73,13 +74,25 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
+    box-sizing: border-box;
 }
 
-.cartao__conteudo p {
-    margin-top: 1rem;
-    padding: 2rem;
-    margin-top: 4rem;
+.cartao__conteudo__resposta {
+    transform: rotateY(180deg);
+    background-color: rdba(0, 244, 191, 0.2);
+    border: 4px solid var(--card-back-color);
 }
+
+
+
+
+
+
+
+
+
+
+
 
 footer {
     background-color: black;
@@ -96,11 +109,19 @@ footer p {
     margin-top: 0.5rem;
 }
 
-#container {
-    display: flex;
-     flex-wrap: wrap;
-     justify-content: space-between;
-     padding: 4rem;
-     padding: 4rem;
-     gap: 3rem;
+@media (max-width: 560 px) {
+
+    body {
+        background: url('img/bd-mobile.webp');
+    }
+    .cartao {
+        flex: 1 0 calc(100% - 1rem);
+    }
+    .cartao__conteudo h3 {
+        font-size: 3vw;
+    }
+    .cartao__conteudo p {
+        font-size: 3.8vw;
+    }
+
 }
